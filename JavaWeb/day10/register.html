@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+
+        #rg_outer{
+            background: url("img/register_bg.png") no-repeat center;
+            position:absolute;
+            padding-top:25px;
+            width:100%;
+            height: 100%;
+        }
+
+        #rg_inner{
+            width:900px;
+            height: 500px;
+            border: solid #EEEEEE 8px;
+            background: #FFFFFF;
+            margin:auto;
+        }
+
+        #rg_in_left{
+            float: left;
+            margin: 15px;
+        }
+        #rg_in_middle{
+            float: left;
+        }
+
+        #rg_in_right{
+            float: right;
+            margin:15px;
+        }
+
+        #rg_in_left > p:first-child {
+            color: #FFD026;
+            font-size:20px;
+        }
+        #rg_in_left > p:last-child {
+            color: #A6A6A6;
+            font-size:20px;
+        }
+        #rg_in_right p a {
+            color: #ffc0cb;
+        }
+
+        .rg_form_td_left {
+            width: 100px;
+            text-align: right;
+            height: 45px;
+        }
+
+        .rg_form_td_right{
+            padding-left:50px;
+        }
+
+        /*#username,#password,#email,#name,#phonenumber,#birthday,#checkcode{*/
+        #username,#password,#email,#reg_name,#phonenumber,#birthday,#checkcode{
+            width: 251px;
+            height: 32px;
+            border: 1px solid #A6A6A6 ;
+            /*设置边框圆角*/
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+        #checkcode{
+            width: 110px;
+        }
+
+        #img_check{
+            height: 32px;
+            vertical-align: middle;
+        }
+
+        #btn_sub{
+            width: 150px;
+            height: 40px;
+            background-color: #FFD026;
+            border: 1px solid #FFD026;
+        }
+
+        #btn_td{
+            /*text-align: center;*/
+            padding-left: 150px;
+        }
+        span{
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+<div id="rg_outer">
+    <div id="rg_inner">
+        <div id="rg_in_left">
+            <P>新用户注册</P>
+            <P>USER REGISTER</P>
+        </div>
+        <div id="rg_in_middle">
+            <div id="rg_regform">
+                <form action="#" method="get" id="form">
+                    <table id="rg_form_table">
+                        <tr>
+                            <td class="rg_form_td_left"><label for="username">用户名</label></td>
+                            <td class="rg_form_td_right">
+                                <input type="text" name="username" id="username" placeholder="请输入用户名" /><span id="span_username"></span>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td class="rg_form_td_left"><label for="password">密码</label></td>
+                            <td class="rg_form_td_right">
+                                <input type="password" name="password" id="password" placeholder="请输入密码" /><span id="span_password"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="rg_form_td_left"><label for="email">Email</label></td>
+                            <td class="rg_form_td_right">
+                                <input type="text" name="email" id="email" placeholder="请输入邮箱" /><span id="span_email"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="rg_form_td_left"><label for="reg_name">姓名</label></td>
+                            <td class="rg_form_td_right"><input type="text" name="name" id="reg_name" placeholder="请输入姓名" /><span id="span_name"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="rg_form_td_left"><label for="phonenumber">手机号</label></td>
+                            <td class="rg_form_td_right"><input type="text" name="phonenumber" id="phonenumber" placeholder="请输入手机号" /><span id="span_phonenumber"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="rg_form_td_left"><label>性别</label></td>
+                            <td class="rg_form_td_right">
+                                <input type="radio" name="gender" value="male" /> 男
+                                <input type="radio" name="gender" value="female" /> 女<span></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="rg_form_td_left"><label for="birthday">出生日期</label></td>
+                            <td class="rg_form_td_right"><input type="date" name="birthday" id="birthday"  placeholder="请输入出生日期" /><span></span> </td>
+                        </tr>
+                        <tr>
+                            <td class="rg_form_td_left"><label for="checkcode">验证码</label></td>
+                            <td class="rg_form_td_right">
+                                <input type="text" name="checkcode" id="checkcode"  placeholder="请输入验证码" />
+                                <img src="img/verify_code.jpg" id="img_check" /><span></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" id="btn_td">
+                                <input type="submit" value="注册" id="btn_sub" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div id="rg_in_right">
+            <P>已有账号?<a href="#">立即登录</a></P>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var username = document.getElementById("username");
+    var password = document.getElementById("password");
+    // var email = document.getElementById("email");
+    // var name = document.getElementById("name");
+    var reg_name = document.getElementById("reg_name");
+    // alert(reg_name);
+    // alert(reg_name.getAttribute("name"));
+    var phonenumber = document.getElementById("phonenumber");
+
+    var span_username = document.getElementById("span_username");
+    var span_password = document.getElementById("span_password");
+    // var span_email = document.getElementById("span_email");
+    var span_name = document.getElementById("span_name");
+    var span_phonenumber = document.getElementById("span_phonenumber");
+
+
+    document.getElementById("form").onsubmit = function () {
+        var flag = usernameRegExp(username,span_username,"用户名") && usernameRegExp(password,span_password,"密码")&& emailRegExp() && usernameRegExp(reg_name,span_name,"姓名") && usernameRegExp(phonenumber,span_phonenumber,"电话");
+        // var flag = usernameRegExp(username,span_username) && usernameRegExp(password,span_password)
+        //     && emailRegExp() && usernameRegExp(reg_name,span_name) && usernameRegExp(phonenumber,span_phonenumber);
+        // var flag = usernameRegExp() && passwordRegExp() && emailRegExp2();
+
+        if(flag){
+            alert("注册成功！");
+            return true;
+        }else {
+            alert("格式 错误 ！");
+        }
+        return false;
+    }
+/*    document.getElementById("username").onblur = usernameRegExp;
+    document.getElementById("password").onblur = passwordRegExp;
+    document.getElementById("email").onblur = emailRegExp;
+    document.getElementById("name").onblur = nameRegExp;
+    document.getElementById("phonenumber").onblur = phonenumberRegExp;*/
+
+    document.getElementById("username").onblur = function () {
+        usernameRegExp(username,span_username,"用户名")
+    };
+    document.getElementById("password").onblur = function () {
+        usernameRegExp(password,span_password,"密码")
+    };
+
+    document.getElementById("email").onblur = emailRegExp;
+
+    document.getElementById("reg_name").onblur = function () {
+        usernameRegExp(reg_name,span_name,"姓名")
+    };
+    document.getElementById("phonenumber").onblur = function () {
+        usernameRegExp(phonenumber,span_phonenumber,"电话")
+    };
+
+
+    function usernameRegExp(input,span,sstr) {
+        var reg_user = new RegExp("^\\w{6,12}$");
+        var flag = reg_user.test(input.value);
+        if(flag){
+            span.innerHTML = "<img src='img/gou.png' height='25px' width='35px'>";
+        }else{
+            span.innerHTML = sstr + "格式错误";
+        }
+        return flag;
+    }
+
+
+
+/*
+    function passwordRegExp() {
+        var in_password = document.getElementById("password");
+        var reg_user = new RegExp("^\\w{6,12}$","i");
+        var flag = reg_user.test(in_password.value);
+        var span = document.getElementById("span_password");
+        if(flag){
+            span.innerHTML = "<img src='img/gou.png' height='25px' width='35px'>";
+        }else{
+            span.innerHTML = "密码格式错误";
+        }
+        return flag;
+    }
+*/
+
+
+
+    function emailRegExp() {
+        var in_email = document.getElementById("email");
+        var reg = /^[a-zA-Z_0-9]+@[a-z0-9]+(.[a-z]{2,3})+$/;
+        var flag = reg.test(in_email.value);
+        var span = document.getElementById("span_email");
+        if(flag){
+            span.innerHTML = "<img src='img/gou.png' height='25px' width='35px'>";
+        }else{
+            span.innerHTML = "邮件格式错误";
+        }
+        return flag;
+    }
+
+
+/*    function nameRegExp() {
+        var in_username = document.getElementById("name");
+        var reg_user = new RegExp("^\\w{6,12}$","i");
+        var flag = reg_user.test(in_username.value);
+        var span = document.getElementById("span_name");
+        if(flag){
+            span.innerHTML = "<img src='img/gou.png' height='25px' width='35px'>";
+        }else{
+            span.innerHTML = "密码格式错误";
+        }
+        return flag;
+    }*/
+
+    /*
+        function usernameRegExp() {
+            var reg_user = new RegExp("^\\w{6,12}$");
+            var flag = reg_user.test(this.value);
+            var span = this.nextSibling;
+            // var span = document.getElementById("span_username");
+            if(flag){
+                span.innerHTML = "<img src='img/gou.png' height='25px' width='35px'>";
+            }else{
+                span.innerHTML = "格式错误";
+            }
+            return flag;
+        }*/
+</script>
+
+
+</body>
+</html>

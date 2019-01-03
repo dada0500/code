@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- 网页使用的语言 -->
+<html lang="zh-CN">
+<head>
+    <!-- 指定字符集 -->
+    <meta charset="utf-8">
+    <TITLE>JQ</TITLE>
+    <!-- <script src="js/jquery-2.1.0.min.js"></script> -->
+    <script src="./js/jquery-3.3.1.js"></script>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px dashed #ff0000;
+		}
+	</style>
+</head>
+<BODY>
+
+<script type="text/javascript">
+$(function(){
+	var divs = document.getElementsByTagName("div");
+	// alert(divs);    // 通过js方式获取的div标签元素，字符串表示形式： [object HTMLCollection]
+	$("#d1").html("d1");
+
+	var $divs = $("div");
+	// alert($divs);    // 通过jq方式获取的div标签元素，字符串表示形式： [objecdt Object]
+
+	$(divs).html("divs");
+
+	$divs[0].style.backgroundColor = "#aabbcc";
+	$divs.get(1).style.backgroundColor ="#ccbbaa";
+});	
+</script>
+
+<div id="d1">aa</div>
+<div></div>
+<div></div>
+<input type="text"  name="name"  value="a" readonly="readonly" placeholder="请输入姓名" />
+<input type="text"  name="name"  value="a" readonly="readonly" disabled="disabled"  placeholder="请输入姓名" />
+<input type="text"  name="name"  value="a" placeholder="请输入姓名" />
+<input type="text"  name="name"  value="a" disabled="disabled" placeholder="请输入姓名" />
+</BODY>
+</html>

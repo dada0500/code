@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 数据库连接信息 -->
+    <properties>
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mybatis03"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </properties>
+
+    <properties resource="com/"
+    <!--延迟加载-->
+    <settings>
+        <!--是否开启延迟加载-->
+        <!--<setting name="lazyLoadingEnabled" value="true"/>-->
+        <setting name="aggressiveLazyLoading" value="false" />
+    </settings>
+    <!-- 别名 -->
+    <typeAliases>
+        <typeAlias type="com.heima.domain.User" alias="user" />
+        <package name="com.heima.domain" />
+    </typeAliases>
+    
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}" />
+                <property name="username" value="${username}" />
+                <property name="password" value="${password}" />
+            </dataSource>
+        </environment>
+    </environments>
+    <!--映射配置-->
+    <mappers>
+        <package name="com.heima.dao" />
+    </mappers>
+</configuration>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //根据传递过来的参数name获取对应的值
+    function getParameter(name,url) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)","i");
+        // var r = location.search.substr(1).match(reg);
+        // var r = url.search.substr(1).match(reg);
+        // var url = "cid=5&nam=8";
+        var r = url.match(reg);
+        alert("r:" + r);
+        if (r!=null) return (r[2]); return null;
+    }
+    // alert("cid: " + getParameter("cid"));
+    var a = getParameter("cid","");
+    alert(a);
+    // var a = getParameter("cid","http://localhost/travel/index.html");
+    // alert(a);
+    var a = getParameter("cid","cid=&serarch=s");  // r: cid=&,,,&
+    alert(a);
+    var a = getParameter("cid","serarch=s&cid=5&nam=8");  //r:  &cid=5&,&,5,&
+    alert(a);
+    var a = getParameter("cid","cid=5&nam=8");  // r: cid=5&,,5,&
+    alert(a);
+</script>
+
+</body>
+</html>

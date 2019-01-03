@@ -1,0 +1,19 @@
+print1方法发生异常
+异常名称：java.lang.ArithmeticException
+异常名称：ArithmeticException
+异常原因：/ by zero
+异常 e.getLocalizedMessage ()：null
+-------------------
+print3方法发生异常
+异常名称：java.lang.ArrayIndexOutOfBoundsException
+异常名称：ArrayIndexOutOfBoundsException
+异常原因：0
+异常 e.getLocalizedMessage ()：null
+-------------------
+print2方法发生异常
+异常名称：java.lang.NullPointerException
+异常名称：NullPointerException
+异常原因：null
+异常 e.getLocalizedMessage ()：null
+-------------------
+总共发生了3个异常

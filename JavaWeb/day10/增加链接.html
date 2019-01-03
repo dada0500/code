@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        a{
+            border: #EEEEEE 1px solid;
+        }
+        a:active,a:hover {
+            outline: 0;
+        }
+        a {
+            color: #337ab7;
+            text-decoration: blink;
+        }
+    </style>
+</head>
+<body>
+<a id="a">增加</a>
+
+
+<script>
+    var a = document.getElementById("a");
+    a.onclick = adda;
+
+    function adda() {
+        var text = document.createTextNode("增加");
+        var aAdd = document.createElement("a");
+        aAdd.appendChild(text);
+        this.parentElement.appendChild(aAdd);
+        aAdd.onclick = adda;
+    }
+
+</script>
+</body>
+</html>

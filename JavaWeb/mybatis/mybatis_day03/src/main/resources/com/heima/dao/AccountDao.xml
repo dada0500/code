@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heima.dao.AccountDao">
+    <resultMap id="accountUser" type="account">
+        <id property="id" column="id"/>
+        <id property="uid" column="uid"/>
+        <id property="money" column="money"/>
+<!--        <collection property="users" ofType="user" >
+            <id property="id" column="uid" />
+            <result property="username" column="username" />
+            <result property="address" column="address" />
+&lt;!&ndash;            <result property="sex" column="sex" />
+            <result property="birthday" column="birthday" />&ndash;&gt;
+        </collection>-->
+        <association property="user" javaType="user" >
+            <id property="id" column="uid" />
+            <result property="username" column="username" />
+            <result property="address" column="address" />
+<!--            <result property="sex" column="sex" />
+            <result property="birthday" column="birthday" />-->
+        </association>
+    </resultMap>
+    
+    <!--配置查询所有用户-->
+    <select id="findAll" resultType="user">
+        select * from user
+    </select>
+    <!--配置查询所有账户-->
+    <select id="findAllAccountUser" resultType="AccountUser">
+        SELECT a.*,u.username,u.address FROM account a, `user` u WHERE a.UID = u.id;
+    </select>
+    <!--配置查询所有账户-->
+    <select id="findAllAccount" resultMap="accountUser">
+        SELECT a.*,u.username,u.address FROM account a, `user` u WHERE a.UID = u.id;
+    </select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<stus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://url.com"
+      xsi:schemaLocation="http://url.com stus.xsd">
+<!--<stus   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://url.com"
+            xsi:schemaLocation="http://url.com stus.xsd">-->
+    <stu number="heima_1123">
+        <name></name>
+        <age>30</age>
+        <sex>mael</sex>
+    </stu>
+    <stu number="heima_1123">
+        <name></name>
+        <age>30</age>
+        <sex>mael</sex>
+    </stu>
+</stus>

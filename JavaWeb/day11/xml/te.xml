@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<?xml-stylesheet type="text/css" href="te.css" ?>
+
+<!---->
+<!---->
+
+
+<a>
+<file type="sefe 'aaa' fe">wen</file>
+<person sex="female" SEX="MALE">
+<firstname id="1">Anna</firstname>
+<lastname>Smith</lastname>
+<lastname>  森远股份《         &lt;  >         》圾?,,.,.78&amp;*90  </lastname>
+</person>
+
+    <![CDATA[  森远股份《         <  >         》圾?,,.,.78&*90  ]]>
+
+
+<person>
+<sex>female</sex>
+<firstname id="1">Anna</firstname>
+<lastname>Smith</lastname>
+</person>
+</a>

@@ -1,0 +1,232 @@
+
+就业班JavaSE第12天
+
+
+
+基础题
+练习一：函数式接口
+1.	定义一个函数式接口CurrentTimePrinter,其中抽象方法void printCurrentTime()，使用注解@FunctionalInterface
+
+2.	在测试类中定义static void showLongTime(CurrentTimePrinter timePrinter)，该方法的预期行为是使用timePrinter打印系统当前毫秒值
+
+3.	测试showLongTime(),通过lambda表达式完成需求
+
+
+
+练习二：函数式接口
+1.	定义一个函数式接口IntCalc,其中抽象方法int calc(int a , int b)，使用注解@FunctionalInterface
+2.	在测试类中定义static void getProduct(int a , int b ,IntCalc calc), 该方法的预期行为是使用calc得到a和b的乘积并打印结果
+3.	测试getProduct(),通过lambda表达式完成需求
+
+练习三：静态方法引用
+1.	定义一个函数式接口NumberToString,其中抽象方法String convert(int num)，使用注解@FunctionalInterface
+2.	在测试类中定义static void decToHex(int num ,NumberToString nts), 该方法的预期行为是使用nts将一个十进制整数转换成十六进制表示的字符串，tips:已知该行为与Integer类中的toHexString方法一致
+3.	测试decToHex (),使用方法引用完成需求
+
+练习四：成员方法引用、可变参数
+1.	已知有随机数工具类如下：
+import java.util.Random;
+public class RandomUtil {
+    private Random random = new Random();
+
+    public int nextInt(int... nums) {
+        if (nums == null || nums.length == 0) {
+            throw new RuntimeException("pls认真一点！");
+        }
+	   //生成1到nums[0](包含1和nums[0])之间的随机数
+        if (nums.length == 1) return random.nextInt(nums[0]) + 1;
+
+        //生成nums[0]到nums[1](包含nums[0]和nums[1])之间的随机数
+		// 10, 20
+		// 21 – 10 -> 11		-> 0 – 10
+		// num + 10;
+        if (nums.length == 2) return random.nextInt(nums[1] + 1 - nums[0]) + nums[0];
+
+	   //从数组nums中取出一个随机元素
+	   return nums[random.nextInt(nums.length)];
+    }
+}
+2.	定义一个函数式接口NumberSupplier,其中抽象方法int getNum(int...nums)，使用注解@FunctionalInterface
+3.	在测试类中定义static void getRandomNumFromOneToNum(int num , NumberSupplier ns), 该方法的预期行为是使用ns得到一个从1到num(包含1和num)之间的随机数并打印
+4.	在测试类中定义static void getRandomNumFromAToB(int a ,int b, NumberSupplier ns), 该方法的预期行为是使用ns得到一个从a到b(包含a和b)之间的随机数并打印
+5.	在测试类中定义static void getRandomNumFromArray(int[] nums, NumberSupplier ns), 该方法的预期行为是使用ns从数组nums中获取一个随机元素并打印
+6.	主方法中测试调用以上三个方法，使用方法引用完成需求
+
+练习五：super引用成员方法
+按要求补全代码
+1.	有函数式接口Helper如下
+@FunctionalInterface
+public interface Helper {
+    void help();
+}
+2.	有父类Father如下
+public class Father {
+    public void askMoney(){
+        System.out.println("向家中的财政老大要钱购买家庭物资...");
+    }
+
+    public void spendMoney(){
+        System.out.println("去村口小卖部付钱给老板打酱油...");
+    }
+}
+
+
+3.	有子类Son如下
+public class Son extends Father {
+    @Override
+    public void askMoney() {
+        System.out.println("向家中的财政老大要钱交(上)学(网)费(吧)...");
+    }
+    @Override
+    public void spendMoney() {
+        System.out.println("去网吧付钱给网管开了一台机器...");
+    }
+    public void helpFather(Helper helper) {
+        helper.help();
+    }
+    //完成帮助Father打酱油的方法
+    public void daJiangYou() {
+        _____________________________;
+        _____________________________;
+    }
+}
+4.	使用方法引用补全Son类中横线处的代码，帮助Father打酱油
+
+练习六：this引用成员方法
+按要求补全代码
+1.	有字符串包装StringWrapper接口如下
+public interface StringWrapper {
+    String wrap(String str);
+}
+2.	有Book类如下
+public class Book {
+    //书名
+    private String name;
+    //出版社
+    private String publishingCompany;
+
+    public Book(String name, String publishingCompany) {
+        this.name = name;
+        this.publishingCompany = publishingCompany;
+    }
+
+    //bookMsg()拼接带书名号的书名
+    private String bookMsg(String bookname) {
+        return "《" + bookname + "》";
+    }
+
+    //publishingMsg()拼接出版信息
+    private String publishingMsg(String msg) {
+        return "【专柜正品<" + msg + ">原装绝版】";
+    }
+
+    //packSaleMsg()使用StringWrapper为上架销售信息包装
+    public String packSaleMsg(String msg, StringWrapper wrapper) {
+        return wrapper.wrap(msg);
+    }
+
+    //sale()上架销售
+    public void sale() {
+	   //开始包装上架销售信息
+        String saleMsg = packSaleMsg(             ) + packSaleMsg(             );
+        System.out.println(saleMsg);
+	   //开始售卖
+	   System.out.println("2元一本，欲练此功，必先购买！");
+    }
+}
+3.	有测试类如下
+public class Test05 {
+    public static void main(String[] args) {
+        Book book = new Book("新华字典","商务印书馆");
+        book.sale();
+    }
+}
+4.	填写Book类中空白横线处的代码，要求出现如下结果：
+《新华字典》【专柜正品<商务印书馆>原装绝版】
+2元一本，欲练此功，必先购买！
+
+
+
+
+
+练习七：类的构造器引用
+1.	有对象工厂BeanFactory接口如下
+@FunctionalInterface
+public interface BeanFactory<T> {
+    T getBean();
+}
+2.	有汽车类Car如下
+public class Car {
+    private String brand;
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public Car(String brand) {
+        this.brand = brand;
+    }
+
+    public Car() {
+
+    }
+}
+3.	有测试类如下
+public class Test06 {
+    public static void main(String[] args) {
+        Car Q7 = getCar(______);
+        Q7.setBrand("奥迪");
+    }
+    public static Car getCar(____________){
+        return factory.getBean();
+    }
+}
+4.	补全测试类中横线处的代码，完成原代码的需求
+
+练习八：数组构造器引用
+1.	定义一个函数式接口ArrayBuilder<T>,提供带泛型的抽象方法T[] buildArray(int length)，使用注解@FunctionalInterface
+2.	在测试类中定义static void getIntegerArray(int length , ArrayBuilder<Integer> builder), 该方法的预期行为是使用builder创建一个长度为length的Integer数组并打印其内存地址
+3.	测试getIntegerArray (),使用方法引用完成需求
+练习九：Supplier接口使用
+1.	给出测试类中代码如下：
+import java.util.function.Supplier;
+
+public class Test01 {
+    public static <T> T getObj(Supplier<T> supplier) {
+        return supplier.get();
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+2.	分别使用lambda表达式获得以下对象：
+a)	长度为5的String数组
+b)	包含5个1-20(含1和20)之间随机数的HashSet<Integer>集合
+c)	一个代表2018年4月1日的Calendar对象
+
+
+扩展题
+练习十一：综合练习
+1.	定义学生类:
+a)	成员变量 姓名：String name;
+b)	成员变量 成绩：int score；
+c)	无参及全参构造
+d)	重写toString()
+2.	学生信息与成绩如下：
+姓名	数学
+谢霆锋	85
+章子怡	63
+刘亦菲	77
+黄晓明	33
+岑小村	92
+3.	在测试类中完成如下要求
+a)	将五名学生添加到ArrayList集合
+b)	使用Collections.sort(List<T> list, Comparator<? super T> c)方法将学生成绩从小到大进行排序（忽略非空判断）
+i.	使用匿名内部类
+ii.	使用Lambda表达式
+iii.	使用方法引用	//tips:借助Comparator接口中静态方法comparingInt()方法

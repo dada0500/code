@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <img src="img/on.gif" id="imgOnId" />
+    <img src="img/off.gif" id="imgOffId" />
+    <!--<img src="img/on.gif" id="imgId" onclick="fun"/>-->
+
+<script>
+    // 1. 根据id获取图片对象
+    var imageOn = document.getElementById("imgOnId");
+    var imageOff = document.getElementById("imgOffId");
+
+    // 2. 为图片对象绑定事件，判断图片src是哪个
+    var num = 1;
+/*    function fun() {
+        if(num % 2 == 1){
+            image.src = "img/off.gif";
+            num++;
+        }else {
+            image.src = "img/on.gif";
+            num++;
+        }
+    }*/
+    function fun() {
+        if(num % 2 == 1){
+
+            var accessKey = image.accessKey;
+            alert(accessKey);
+            num++;
+        }else {
+            var accessKey = image.accessKey;
+            alert(accessKey);
+            num++;
+        }
+    }
+
+    // image.onclick = fun;
+    // image.onclick = fun(); //错误写法。
+    // alert(history);
+    var newWindow;
+    imageOn.onclick = function(){
+        newWindow = open();
+    }
+    imageOff.onclick = function(){
+        newWindow.close();
+    }
+</script>
+
+</body>
+</html>

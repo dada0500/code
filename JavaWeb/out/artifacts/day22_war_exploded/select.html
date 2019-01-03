@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/jquery-3.3.1.js" ></script>
+    <script>
+        $(function () {
+
+            // $.get("./getProvince",function (data) {getOptions(data,$("#prov"))},"json");
+            // $.get("./getProvince",getProvince,"json");
+            // $.get("./getCity",{provId:$("#prov > option:selected").val()},getCity,"json");
+            // $.get("./getCounty",{cityId:$("#city > option:selected").val()},getCounty,"json");
+            ajaxGetProv();
+            $("#prov").change(ajaxGetCity);
+
+            $("#city").change(ajaxGetCounty);
+
+        });
+
+        function ajaxGetProv() {
+            $.post(
+                "./getProvince",
+                function (data) {
+                    $("#prov").empty();
+                    getOptions(data, $("#prov"));
+                    ajaxGetCity();
+                },
+                "json"
+            )
+        }
+        function ajaxGetCity() {
+            $.post(
+                "./getCity",
+                {provId:$("#prov > option:selected").val()},
+                function (data) {
+                    $("#city").empty();
+                    getOptions(data,$("#city"));
+                    ajaxGetCounty();
+                },
+                "json"
+            )
+        }
+
+        function ajaxGetCounty () {
+            $.post(
+                "./getCounty",
+                {cityId:$("#city > option:selected").val()},
+                function (data) {
+                    $("#county").empty();
+                    getOptions(data,$("#county"));
+                },
+                "json"
+            )
+        }
+        function getOptions(data,sel){
+            for( var i in data){
+                var op = $("<option></option>").text(data[i].name).val(data[i].id);
+                sel.append(op);
+            }
+        }
+        /*
+        function getCounty(data){
+            $("#city").empty();
+            for( var i in data){
+                var op = $("<option></option>").text(data[i].name).val(data[i].id);
+                $("#county").append(op);
+            }
+        }
+        function getCity(data){
+            $("#city").empty();
+            for( var i in data){
+                var op = $("<option></option>").text(data[i].name).val(data[i].id);
+                $("#city").append(op);
+            }
+        }
+        function getProvince(data){
+            $("#prov").empty();
+            for( var i in data){
+                var op = $("<option></option>").text(data[i].name).val(data[i].id);
+                $("#prov").append(op);
+                // option += "<option value=" + data[i].name + ">"+data[i].name+"</option>"
+            }
+        }*/
+    </script>
+</head>
+<body>
+<select id="prov">
+    <option>---</option>
+</select>
+<select id="city">
+    <option>---</option>
+</select>
+<select id="county">
+    <option>---</option>
+</select>
+</body>
+</html>

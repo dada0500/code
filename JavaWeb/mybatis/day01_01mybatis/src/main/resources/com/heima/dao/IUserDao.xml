@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:dao接口  -->
+<mapper namespace="com.heima.dao.IUserDao">
+    <!-- 查询所有 id:方法名 resultType: 返回值类型 User, 查询结果为多个时返回:List<User>  结果只有一个则返回:User -->
+    <select id="findAll" resultType="com.heima.domain.User">
+        SELECT * FROM tab_user
+    </select>
+
+    <!-- 保存用户 id:方法名 parameterType: 参数类型 -->
+    <insert id="saveUser" parameterType="com.heima.domain.User">
+        <!-- 配置插入操作后,获取插入数据的id -->
+        <!-- keyProperty代表要返回的值名称(对应的UserBean属性名称), keyColumn(数据库的列) , order(什么时候进行这个操作): 取值为AFTER代表插入后的行为, resultType代表返回值的类型 -->
+<!--        <selectKey keyProperty="uid"  keyColumn="uid" order="AFTER" resultType="java.lang.Integer">
+            select last_insert_id();
+        </selectKey>-->
+
+        <!-- 参数格式 #{类的属性}  如UserBean类的get方法是getUid就是uid  #{property|(expression), var1=value1, var2=value2, ...} -->
+        INSERT INTO tab_user(username,password,sex,birthday)VALUES (#{username},#{password},#{sex},#{birthday});
+    </insert>
+
+    <!-- 更新用户 -->
+    <update id="updateUser" parameterType="com.heima.domain.User">
+        UPDATE tab_user SET username = #{username}, address = #{address} WHERE id = #{id}
+    </update>
+
+    <!-- 删除用户 这里参数只有一个int类型的值,parameterType的值写为:int | INT | Integer | integer | INTEGER | java.lang.Integer 都可以 -->
+    <delete id="deleteUser" parameterType="integer">
+        <!-- 这里的sql语句参数需一个,可以随意写 -->
+        DELETE FROM tab_user WHERE uid = #{只传一个参数不能带逗号}
+    </delete>
+
+    <!-- 根据id查询用户 -->
+    <select id="findUser" parameterType="int" resultType="com.heima.domain.User">
+        select * from tab_user where id = #{随意写标识符};
+    </select>
+
+    <!-- 模糊查询 -->
+    <select id="findByUsername" parameterType="String" resultType="com.heima.domain.User">
+        select * from tab_user where username like #{username}
+    </select>
+</mapper>

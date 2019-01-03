@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title>js</title>
+<body>
+<input type="button" id="button" value="点击按钮" />
+<br>
+<script type="text/javascript">
+
+
+var str="Every man in the world! Every woman on earth!";
+var patt=/man/g;
+var str2=str.replace(patt,"person");
+document.write(str2+"<br>");
+patt1=/(wo)?man/g;
+patt.compile(patt1);
+str2=str.replace(patt,"person");
+document.write(str2);
+</script>
+</body>
+</html>

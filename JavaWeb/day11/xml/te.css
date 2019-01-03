@@ -1,0 +1,18 @@
+a{
+    /*background: #1A89EE;*/
+    background-color: #1A89EE;
+    width: 100%;
+}
+
+person{
+    display: block;
+    margin-bottom: 30pt;
+    margin-left: 0;
+
+}
+fistname,lastname
+{
+    display: block;
+    color: #000000;
+    margin-left: 20pt;
+}

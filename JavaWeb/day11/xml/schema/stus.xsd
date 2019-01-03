@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://url.com"
+            xmlns="http://url.com"
+            elementFormDefault="qualified">
+
+    <!-- 定义根 stus-->
+    <xsd:element name="stus" type="stusType" />
+
+    <!-- 定义元素stu内元素 -->
+    <xsd:complexType name="stuType">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" />
+            <xsd:element name="age" type="ageType" />
+            <xsd:element name="sex" type="sexType" />
+        </xsd:sequence>
+        <!--设置stu的属性-->
+        <xsd:attribute name="number" type="numberType" use="required" />
+    </xsd:complexType>
+
+    <!-- 约束编号 -->
+    <xsd:simpleType name="numberType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="heima_\d{4}" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!-- 约束年龄 -->
+    <xsd:simpleType name="ageType">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minExclusive value="1" />
+            <xsd:maxExclusive value="99" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--约束性别 -->
+    <xsd:simpleType name="sexType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="mael" />
+            <xsd:enumeration value="femael" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--定义根stus类型 ， 内有元素stu-->
+    <xsd:complexType  name="stusType" >
+        <xsd:sequence>
+            <xsd:element name="stu" type="stuType"
+                         minOccurs="1" maxOccurs="2" />
+            <!-- <xsd:element name="stu" type="stuType"
+                          minOccurs="1" maxOccurs="unbounded" />-->
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

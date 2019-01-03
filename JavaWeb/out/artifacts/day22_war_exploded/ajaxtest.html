@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/jquery-3.3.1.js" ></script>
+    <script>
+        $(function(){
+/*            $.ajax({
+                url:"ajax",
+                type:"POST",
+                data:{username:"张三",password:123},
+                success:function (data) {
+                    alert(data);
+                }
+            })*/
+        });
+
+
+        function ajax(){
+            $.ajax({
+                url:"ajax",
+                type:"GET",
+                data:"sourceData",
+                success:alertData,
+                error:error,
+                // dataType:"json"
+            });
+        }
+
+        function alertData(data){
+            alert(data)
+        }
+
+        function error(req,status,err){
+            alert("error:" + req + " _ " + status + " _ "  + err + "this: " + this.toString());
+            alert("req: " + req.toString());
+
+        }
+    </script>
+</head>
+<body>
+<input type="button" onclick="ajax()" value="异步发送数据" placeholder="..." />
+<input type="text" placeholder="..." />
+</body>
+</html>

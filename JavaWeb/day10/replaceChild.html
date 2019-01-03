@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>replaceChild</title>
+
+    <style>
+        div{
+            border:1px solid;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    div1
+</div>
+
+<!--<a href="#" >替换</a>-->
+<a href="javascript:void(-1)" >替换</a>
+
+<script>
+    var ele_a = document.getElementsByTagName("a")[0];
+
+    ele_a.onclick = function(){
+        // 创建 新标签：a
+        var new_a = document.createElement("a");
+        // 给新标签a中增加text节点
+        var text = document.createTextNode("新");
+        new_a.appendChild(text);
+        //替换原 div1为 新标签
+
+        var div1 = document.getElementById("div1");
+        var parentNode = div1.parentNode;
+        parentNode.
+        parentNode.replaceChild(new_a,div1);
+
+    }
+
+
+/*
+    var parentElement = div1.parentElement;
+    parentElement.replaceChild(new_a,div1)*/
+
+</script>
+</body>
+</html>

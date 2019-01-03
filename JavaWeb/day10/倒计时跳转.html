@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跳转</title>
+    <style>
+        p{
+            text-align: center;
+        }
+        #time{
+            color: #ff0000;
+        }
+    </style>
+
+</head>
+<body>
+<p>
+    <span id="time">5</span>秒后跳转
+</p>
+
+<script>
+
+    var elementById = document.getElementById("id1");
+    alert(elementById);
+    var seconed = 5;
+    var time1 = document.getElementById("time");
+
+    function locat(){
+        seconed--;
+
+        if(seconed == 0 ){
+            location.href="localhost://1.html";
+            clearInterval(interval);
+        }
+
+        time1.innerHTML = seconed;
+    }
+
+    var interval = setInterval(locat,1000);
+</script>
+</body>
+</html>

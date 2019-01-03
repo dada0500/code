@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+
+
+
+</head>
+<body>
+
+<script>
+    // add(1,2,3,4);
+    // fun2(5,6);
+    function add(){
+        for (var o1bj1 in arguments) {
+            document.write(arguments[o1bj1]);
+            alert(o1bj1);
+
+        }
+    }
+
+    function fun2() {
+        for(var i=0;i < arguments.length;i++){
+            alert(arguments[i]);
+        }
+    }
+
+
+    var arr = new Array();
+    alert(arr);
+    document.write(arr);
+    arr[10] = "hello";
+    document.write(arr[10] + "<br />");
+    document.write(arr[9] + "<br />");
+    document.write(arr + "<br />");
+    document.write(arr.join("--") + "<br />");
+    document.write(arr + "<br />");
+
+</script>
+
+</body>
+</html>

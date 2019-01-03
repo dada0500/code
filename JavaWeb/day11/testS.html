@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--ָ��Ϊ����-�й�-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>����������</title>
+    <!--����bootstrap���-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        // $.noConflict();
+        $(document).ready(function () {
+
+            $("#but1").click(function (ev) {
+                // $("#ed").hide();
+                // $("#ed").toggle();
+                // $("#ed").slideToggle();
+                $("#ed").animate({height:'toggle'},'slow');
+            });
+            $("#but2").click(function (ev) {
+                // $("#ed").hide();
+                // $("#ed").animate({left:'500px'});
+                // $("#ed").animate({'font-size':'50px'},'slow');
+                $("#ed").animate({fontSize:'+=50px'},'slow');
+                $("#ed").animate({left:'500px'},2000);
+            });
+        });
+
+
+/*        var jqaa = noConflict();
+        jqaa(document).ready(
+            function dir() {
+                jqaa("#ed").css("border","2px #FF0000 dashed");
+            };
+            dir();
+        );*/
+    </script>
+
+    <style>
+        #ed{
+            font-size: 10px;
+            position: relative;
+        }
+    </style>
+
+</head>
+<body>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+
+<div>
+    text:
+</div>
+<div id="ed">
+    text:
+</div>
+<button id="but1">显示/隐藏</button>
+<button id="but2">animate</button>
+</body>
+</html>

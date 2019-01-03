@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+    The content of element type "configuration" must match "(properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,objectWrapperFactory?,reflectorFactory?,plugins?,environments?,databaseIdProvider?,mappers?)".
+    -->
+<!--    <properties>
+        <property name="driver" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/mybatis" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+    </properties>-->
+    <properties resource="com/heima/db.properties"/>
+    <!--<properties url="file:///E:\code\JavaWeb\mybatis\mybatis_demo01\src\main\resources\jdbc.properties"/>-->
+    <typeAliases>
+        <typeAlias type="com.heima.domain.User" alias="user" />
+    </typeAliases>
+    <!-- 数据库连接配置 -->
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="jdbc"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+<!--                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}" />
+                <property name="username" value="${username}" />
+                <property name="password" value="${password}" />-->
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 映射文件配置 -->
+    <mappers>
+        <package name="com.heima.dao" />
+        <!--<package name="com/heima/dao" />-->
+        <!--<mapper class="com.heima.domain.UserDao" />-->
+        <!--<mapper resource="com/heima/dao/UserDao.xml" />-->
+    </mappers>
+</configuration>

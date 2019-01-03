@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $("#tel").blur(function () {
+                var value = $(this).val();
+                var reg = new RegExp("^1[356789][0-9]{9}$");
+
+                if(reg.test(value)){
+                    $("#span_tel").html("格式正确");
+                    $("#span_tel").css("color","#00ee00");
+                }else {
+                    $("#span_tel").html("格式错误");
+                    $("#span_tel").css("color","#ee1111");
+                }
+            });
+
+            $("#name").blur(function () {
+                var value = $(this).val();
+                $.get("findUser",{name:value},function (data) {
+                    if(data.userExist) {
+                        $("#span_name").css("color","#ee1111");
+                    }else{
+                        $("#span_name").css("color", "#00ee00");
+                    }
+                    $("#span_name").html(data.msg);
+             });
+            });
+
+        });
+    </script>
+</head>
+<body>
+用户名：<input type="text" id="name"/><span id="span_name"></span><br/>
+密码：<input type="text" id="password" /><span id="span_pass"></span><br/>
+电话：<input type="text" id="tel"/><span id="span_tel"></span><br/>
+<input type="submit" id="subbtn"/><br/>
+
+</body>
+</html>

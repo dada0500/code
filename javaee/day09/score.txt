@@ -1,0 +1,10 @@
+wangwu=85
+lisi=100
+d=4
+a=7
+z=10
+b=6
+l=8
+zhangsan=90
+c=5
+w=9

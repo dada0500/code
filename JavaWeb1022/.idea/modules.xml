@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://E:/ke/mysql考试/LoginAnswer/LoginAnswer.iml" filepath="E:/ke/mysql考试/LoginAnswer/LoginAnswer.iml" />
+      <module fileurl="file://E:/ke/mysql考试/TransferAnswer/TransferAnswer.iml" filepath="E:/ke/mysql考试/TransferAnswer/TransferAnswer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mysql/mysql.iml" filepath="$PROJECT_DIR$/mysql/mysql.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/jquery-3.3.1.js" ></script>
+</head>
+<body>
+
+<script>
+    $.ajax({
+        url:"beanToJson",
+        type:"GET",
+        successs:function(data,a,b,c,d,e){
+            alert("data： " + data);
+            alert("a： " + a);
+            alert("b： " + b);
+            alert("c： " + c);
+            alert("d： " + d);
+            alert("e： " + e);
+        },
+        error:function (a,b,c,d,e,f) {
+            alert("a： " + a);
+            alert("b： " + b);
+            alert("c： " + c);
+            alert("d： " + d);
+            alert("e： " + e);
+            alert("f： " + f);
+
+        }
+
+
+
+    });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #div_input,#selectButton{
+            width: 600px;
+            text-align: center;
+            margin:50px auto;
+
+        }
+        table{
+            width:500px;
+            text-align: center;
+            border-collapse:collapse;
+            margin:auto;
+        }
+
+        table,th,td{
+            border: 1px solid #000000;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+
+<div id="div_input">
+    <input type="text" name="stuId" id="stuId"  placeholder="请输入编号" />
+    <input type="text" name="stuName" id="stuName"  placeholder="请输入姓名" />
+    <input type="text" name="stuClass" id="stuClass"  placeholder="请输入班级" />
+    <input type="button" id="stuButton" value="提交" />
+</div>
+
+<table>
+    <caption>学生信息表</caption>
+    <tr>
+        <th><input type="checkbox" name="th_check" id="th_check" onclick="check(this);" /></th>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>班级</th>
+        <th>操作</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="tr_check"></td>
+        <td>1</td>
+        <td>张三</td>
+        <td>java34</td>
+        <td><a href="javascript:void(0);" class="td_a" onclick = "delTr(this);">删除</a></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="tr_check"></td>
+        <td>1</td>
+        <td>张三</td>
+        <td>java34</td>
+        <td><a href="javascript:void(0);" class="td_a" onclick = "delTr(this);">删除</a></td>
+    </tr>
+</table>
+<div id="selectButton">
+<input type="button" id="select_all" value="全选" >
+<input type="button" id="select_other" value="反选" >
+<input type="button" id="select_none" value="全不选" >
+</div>
+
+<script>
+
+        // 给表格添加行
+        var tableObj = document.getElementsByTagName("table")[0];
+        function addTr() {
+
+            // 1. 获取对象
+            var stuId = document.getElementById("stuId").value;
+            var stuName = document.getElementById("stuName").value;
+            var stuClass = document.getElementById("stuClass").value;
+            // 2. 绑定事件：添加表格
+            // 2.1 获取表格对象
+            // 2.2 向表格添加一行
+            tableObj.innerHTML += "    <tr onmouseover=\"bgcolor1(this);\" onmouseout=\"bgcolor2(this);\" >" +
+                "        <td><input type=\"checkbox\" name=\"tr_check\"></td>" +
+                "        <td>" +stuId+ "</td>" +
+                "        <td>" + stuName + "</td>" +
+                "        <td>" + stuClass + "</td>" +
+                "        <td><a href=\"javascript:void(0);\" class=\"td_a\"  onclick = \"delTr(this);\">删除</a></td>" +
+                "    </tr>";
+        }
+
+        // 2.3 给stuButton绑定事件：添加表格
+        var stuButton = document.getElementById("stuButton");
+        stuButton.onclick = addTr;
+
+
+        //  表格删除行
+        function delTr(tda) {
+            var tb = tda.parentElement.parentElement.parentElement;
+            var tr = tda.parentElement.parentElement;
+            tb.removeChild(tr);
+        }
+
+        //
+
+        // 全选 按钮
+        // document.getElementById("select_all").onclick = function () {
+        var elementById = document.getElementById("select_all");
+        elementById.onclick = function () {
+            var tr_check = document.getElementsByName("tr_check");
+            for(var i = 0; i < tr_check.length; i++){
+                tr_check[i].checked = true;
+                // tr_check[i].checked = !tr_check[i].checked;
+            }
+        };
+
+        // 全不选 按钮
+        document.getElementById("select_none").onclick = function () {
+            var tr_check = document.getElementsByName("tr_check");
+            for(var i = 0; i < tr_check.length; i++){
+                tr_check[i].checked = false;
+                // tr_check[i].checked = !tr_check[i].checked;
+            }
+        };
+
+        // 反选 按钮
+        document.getElementById("select_other").onclick = function () {
+            var tr_check = document.getElementsByName("tr_check");
+            for(var i = 0; i < tr_check.length; i++){
+                tr_check[i].checked = !tr_check[i].checked;
+            }
+        };
+
+/*        document.getElementById("th_check").onclick = function () { check(this); }
+        function check(obj){
+                       //第一个cb点击
+                       //1.获取所有的checkbox
+                       var cbs = document.getElementsByName("tr_check");
+                       //获取第一个cb
+
+                       //2.遍历
+                       for (var i = 0; i < cbs.length; i++) {
+                           //3.设置每一个cb的状态和第一个cb的状态一样
+                           cbs[i].checked =  obj.checked;
+                       }
+        };*/
+
+
+/*        var trs = document.getElementsByTagName("tr");
+
+        for(var i = 0; i < trs.length; i++){
+            trs[i].onmouseover = function () {
+                this.style.backgroundColor = "#ff5831";
+            };
+            trs[i].onmouseout = function () {
+                this.style.backgroundColor = "#FFFFFF";
+            };
+        }*/
+
+
+        var trs = document.getElementsByTagName("tr");
+        for(var i = 0; i < trs.length; i++){
+            trs[i].setAttribute("onmouseover","bgcolor1(this);")
+            trs[i].setAttribute("onmouseout","bgcolor2(this);")
+        }
+
+        function bgcolor1(obj) {
+            obj.style.backgroundColor = "#ff5831";
+        }
+        function bgcolor2(obj) {
+            obj.style.backgroundColor = "#FFFFFF";
+        }
+
+        function check(obj){
+            //第一个cb点击
+            //1.获取所有的checkbox
+            var cbs = document.getElementsByName("tr_check");
+            //获取第一个cb
+
+            //2.遍历
+            for (var i = 0; i < cbs.length; i++) {
+                //3.设置每一个cb的状态和第一个cb的状态一样
+                cbs[i].checked =  obj.checked;
+            }
+
+        }
+
+</script>
+</body>
+</html>

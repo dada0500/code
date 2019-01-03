@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd" >
+    <!--搜索包-->
+    <context:component-scan base-package="com.itheima"></context:component-scan>
+    <!--配置service-->
+    <bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl" >
+        <constructor-arg name="accountDao" ref="accountDao" ></constructor-arg>
+    </bean>
+
+    <!--配置transactionManager-->
+    <bean id="transactionManager" class="com.itheima.util.TransactionManager">
+        <constructor-arg name="connectionUtil" ref="connnectionUtil"></constructor-arg>
+    </bean>
+    <!--配置connectionUtil-->
+    <bean id="connnectionUtil" class="com.itheima.util.ConnectionUtil">
+        <constructor-arg name="ds" ref="dataSource"></constructor-arg>
+    </bean>
+
+    <!--配置dao-->
+    <bean id="accountDao" class="com.itheima.dao.impl.AccountDaoImpl">
+        <constructor-arg name="runner" ref="queryRunner" ></constructor-arg>
+        <constructor-arg name="connectionUtil" ref="connnectionUtil"></constructor-arg>
+    </bean>
+
+
+    <!--配置queryRunner-->
+    <bean id="queryRunner" class="org.apache.commons.dbutils.QueryRunner">
+
+    </bean>
+
+    <!--配置dataSource-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/dbname"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+
+
+<!--
+    <bean id="dataS" class="com.alibaba.druid.pool.DruidDataSource" >
+
+    </bean>
+-->
+
+
+    <!--配置log-->
+    <bean id="logger" class="com.itheima.util.logger"></bean>
+
+    <!--配置BeanFactory-->
+<!--    <bean id="beanFactory" class="com.itheima.proxy.BeanFactory">
+        <property name="tm" ref="transactionManager"></property>
+        <property name="accountService" ref="accountService"></property>
+    </bean>-->
+    <!--配置AOP-->
+    <aop:config>
+        <!--配置切入点表达式-->
+        <aop:pointcut id="pr1" expression="execution(* com.itheima.service.impl.*.*(..))" ></aop:pointcut>
+        <!--配置aspect切面-->
+        <aop:aspect id="logAdvice" ref="logger" >
+            <!--配置通知的类型,并且建立通知方法和切入点方法的关联-->
+            <!--<aop:before method="printLog" pointcut="execution(private void com.itheima.service.impl.*.*(..))"/>-->
+            <aop:after-returning method="afterReturn" pointcut-ref="pr1" />
+            <aop:before method="printLog" pointcut-ref="pr1" />
+            <aop:after-throwing method="afterThrowing" pointcut-ref="pr1" />
+            <aop:after method="endLog" pointcut="execution(* com.itheima.service.impl.*.*(..))"/>
+            <aop:around method="around" pointcut-ref="pr1" />
+        </aop:aspect>
+    </aop:config>
+</beans>

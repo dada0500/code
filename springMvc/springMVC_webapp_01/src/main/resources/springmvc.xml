@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvn="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <!--开启注解扫描-->
+    <context:component-scan base-package="com.itheima" ></context:component-scan>
+
+    <!--配置视图解析器-->
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="prefix" value="/WEB-INF/pages/" ></property>
+        <property name="suffix" value=".jsp" ></property>
+    </bean>
+
+    <!--配置静态资源不过滤-->
+    <mvc:resources location="/img/" mapping="/img/**" />
+    <mvc:resources location="/js/" mapping="/js/**" />
+    <mvc:resources location="/css/" mapping="/css/**" />
+
+    <!--配置文件解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--最大上传文件字节 10M-->
+        <property name="maxUploadSize" value="10485760" />
+    </bean>
+    <!--配置自定义类型转换器-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.itheima.util.MyStringToDateConvert"></bean>
+            </set>
+        </property>
+    </bean>
+
+    <!--配置异常处理器-->
+    <bean id="OneException" class="com.itheima.exception.OneException"/>
+    
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/test/hello"/>
+            <bean class="com.itheima.ceptor.MyCeptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/test/hello"/>
+            <bean class="com.itheima.ceptor.MyCeptor2"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!--引用自定义类型转换器-->
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+</beans>

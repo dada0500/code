@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation=" http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="AccountService" class="com.heima.service.impl.AccountServiceImpl" scope="singleton" init-method="init" destroy-method="destroy" >
+            <constructor-arg name="accountDao" ref="AccountDao" ></constructor-arg>
+    </bean>
+
+
+
+    <bean id="AccountDao" class="com.heima.dao.impl.AccountDaoImpl"/>
+
+
+    <bean id="factory" class="com.heima.fact.Factory"/>
+    <bean id="factoryGet" factory-bean="factory" factory-method="getAccountService" />
+
+
+    <bean id="factoryStaticGet" class="com.heima.fact.Factory" factory-method="getAccountDao" />
+
+<!--    <bean id="list" class="com.heima.service.ListService" >
+        <property name="myArr" >
+            <array >
+                <value>arr1</value>
+                <value>arr2</value>
+                <value>arr3</value>
+            </array>
+        </property>
+        <property name="myList">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+                <value>list3</value>
+            </list>
+        </property>
+        <property name="mySet">
+            <set>
+                <value>set1</value>
+                <value>set2</value>
+                <value>set3</value>
+            </set>
+        </property>
+        <property name="myMap">
+            <map>
+                <entry key="mapKey1">
+                    <value>mapValue1</value>
+                </entry>
+                <entry key="mapKey2" value="mapValue2">
+                </entry>
+            </map>
+        </property>
+        <property name="myProps">
+            <props>
+                <prop key="propKey1">pp1
+                </prop>
+                <prop key="propKey2">pp2
+                </prop>
+            </props>
+        </property>
+    </bean>-->
+
+    <bean id="list" class="com.heima.service.ListService" p:myArr="s1,s2" p:myList="[l1,l2]" />
+
+</beans>

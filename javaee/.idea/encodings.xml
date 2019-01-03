@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/09_IOAndProperties/cc" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/09_IOAndProperties/ccu" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/day09/a.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/day09/b.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/day09/out2.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/day09/src/com/heima/test/Writer.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/day10/a.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/day10/aaaa.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/day10/b.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/day10/gbk.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/day10/gbk2.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/day10/src/com/heima/zuoye/stu.txt" charset="UTF-8" />
+  </component>
+</project>

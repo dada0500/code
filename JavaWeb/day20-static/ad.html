@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.js" ></script>
+    <script>
+        $(function(){
+            setTimeout(showAd,2000);
+            setTimeout(hideAd,6000);
+            setTimeout(slideDownAd,8000);
+            setTimeout(slideUpAd,12000);
+        });
+
+        function showAd(){
+            $("#ad").fadeIn(2000);
+        };
+        function hideAd(){
+            $("#ad").fadeOut(2000);
+        };
+
+        function slideDownAd() {
+            $("#ad").slideDown(2000);
+        }
+        function slideUpAd() {
+            $("#ad").slideUp(2000);
+        }
+    </script>
+</head>
+<body>
+<div style="display: none;" id="ad">
+    <img src="img/adv.jpg"/>
+</div>
+<div style="widows: 100%;height:500px;background-color: #999"></div>
+
+</body>
+</html>

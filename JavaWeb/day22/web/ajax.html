@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+    <script src="./js/jquery-3.3.1.js" ></script>
+    <script>
+        $(function () {
+            $("#tt").blur(function () {
+                var val = $(this).val();
+                var span = $("#ttspan");
+               $.ajax({
+                   url:"./findUser",
+                   type:"get",
+                   data:{"name":val},
+                   success:function (data) {
+                       if(data.userExist){
+                           span.css("color","red");
+                       }else {
+                           span.css("color","green");
+                       }
+                       span.html(data.msg);
+                   }
+               })
+            });
+        });
+
+      function send() {
+/*          $.ajax(
+              {
+                  type:"get",
+                  url:"./ajax",
+                  data:{"username":"李四","password":123},
+                  success:function (data) {
+                      alert(data);
+                  }
+              }
+
+          )*/
+
+            $.get(
+                "./ajax",
+                {username:"张三a"},
+                function (data) {
+                    alert("$.ajax.get()  " + data);
+                }
+            )
+
+
+
+      }
+
+/*        window.onload = function () {
+
+
+        }*/
+
+/*       var send = function () {
+           // 1. 创建核心对象
+           var xmlHttp;
+           if(window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+               xmlHttp = new XMLHttpRequest();
+           }else {// code for IE6, IE5
+               xmlHttp = new ActiveXObject("Microsoft.XMLHTTP")
+           }
+
+           // 2. 建立连接
+           xmlHttp.open("get","./ajax?username=张三&password=123",true);
+           // 3. 发送请求
+           xmlHttp.send();
+           // 4. 接收并处理来自服务器的响应结果
+           xmlHttp.onreadystatechange = function(){
+               if(xmlHttp.readyState == 4 && xmlHttp.status == 200){
+                   document.getElementById("tt").value = xmlHttp.responseText;
+               }
+           }
+
+       }*/
+    </script>
+</head>
+<body>
+<button type="button" value="异步发送请求" onclick="send();" >异步发送请求</button>
+<input type="text" id="tt" />
+<span id="ttspan"></span>
+
+
+</body>
+</html>

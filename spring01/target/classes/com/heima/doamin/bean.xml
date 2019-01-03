@@ -1,0 +1,37 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    &lt;!&ndash;告知 spring 创建容器时要扫描的包&ndash;&gt;
+    <context:component-scan base-package="com.heima"></context:component-scan>
+
+&lt;!&ndash;    &lt;!&ndash;配置service&ndash;&gt;
+    <bean id="accountService" class="com.heima.service.impl.AccountServiceImpl">
+        <constructor-arg name="accountDao" ref="accountDao" />
+    </bean>
+
+    &lt;!&ndash;配置dao&ndash;&gt;
+    <bean id="accountDao" class="com.heima.dao.impl.AccountDaoImpl">
+        <constructor-arg name="jdbcTemplate" ref="jdbcTemplate">
+        </constructor-arg>
+    </bean>&ndash;&gt;
+
+    &lt;!&ndash;配置jdbcTemplate&ndash;&gt;
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg name="dataSource" ref="dataSource" />
+    </bean>
+
+    &lt;!&ndash;配置dataSource&ndash;&gt;
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" >
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" ></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/dbname" ></property>
+        <property name="username" value="root" ></property>
+        <property name="password" value="root" ></property>
+    </bean>
+</beans>-->
+<a></a>

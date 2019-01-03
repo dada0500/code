@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.maven:maven:RELEASE">
+    <CLASSES>
+      <root url="jar://D:/Develop/maven_repository/org/apache/maven/maven/RELEASE/maven-RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/Develop/maven_repository/org/apache/maven/maven/RELEASE/maven-RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/Develop/maven_repository/org/apache/maven/maven/RELEASE/maven-RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
